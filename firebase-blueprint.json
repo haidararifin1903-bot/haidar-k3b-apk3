@@ -1,0 +1,273 @@
+{
+  "entities": {
+    "Container": {
+      "title": "Container",
+      "description": "Peti kemas di terminal",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "container_number": { "type": "string" },
+        "iso_code": { "type": "string" },
+        "size": { "type": "string" },
+        "type": { "type": "string" },
+        "owner": { "type": "string" },
+        "weight": { "type": "number" },
+        "tare_weight": { "type": "number" },
+        "max_payload": { "type": "number" },
+        "status": { "type": "string" },
+        "location": { "type": "string" },
+        "seal_number": { "type": "string" },
+        "created_at": { "type": "string" },
+        "updated_at": { "type": "string" }
+      },
+      "required": ["container_number", "size", "type", "status", "location"]
+    },
+    "Vessel": {
+      "title": "Vessel",
+      "description": "Kapal petikemas",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "vessel_name": { "type": "string" },
+        "imo": { "type": "string" },
+        "call_sign": { "type": "string" },
+        "capacity": { "type": "number" },
+        "status": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["vessel_name", "imo", "call_sign", "capacity", "status"]
+    },
+    "Customer": {
+      "title": "Customer",
+      "description": "Pelanggan atau shipping line",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "company_name": { "type": "string" },
+        "contact_person": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "address": { "type": "string" },
+        "status": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["company_name", "contact_person", "status"]
+    },
+    "Port": {
+      "title": "Port",
+      "description": "Pelabuhan",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "port_name": { "type": "string" },
+        "port_code": { "type": "string" },
+        "country": { "type": "string" },
+        "status": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["port_name", "port_code", "status"]
+    },
+    "YardLocation": {
+      "title": "YardLocation",
+      "description": "Slot penyimpanan di yard terminal",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "block": { "type": "string" },
+        "row": { "type": "number" },
+        "bay": { "type": "number" },
+        "tier": { "type": "number" },
+        "location_code": { "type": "string" },
+        "status": { "type": "string" },
+        "container_number": { "type": "string" },
+        "max_weight": { "type": "number" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["block", "row", "bay", "tier", "location_code", "status"]
+    },
+    "ContainerType": {
+      "title": "ContainerType",
+      "description": "Master tipe kontainer",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "name": { "type": "string" },
+        "size": { "type": "string" },
+        "description": { "type": "string" },
+        "is_dangerous_goods": { "type": "boolean" },
+        "is_reefer": { "type": "boolean" }
+      },
+      "required": ["code", "name", "size"]
+    },
+    "GateInTransaction": {
+      "title": "GateInTransaction",
+      "description": "Transaksi masuk gerbang terminal",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "transaction_number": { "type": "string" },
+        "container_number": { "type": "string" },
+        "truck_number": { "type": "string" },
+        "driver": { "type": "string" },
+        "date_time": { "type": "string" },
+        "customer_id": { "type": "string" },
+        "customer_name": { "type": "string" },
+        "condition": { "type": "string" },
+        "seal_number": { "type": "string" },
+        "destination": { "type": "string" },
+        "status": { "type": "string" },
+        "assigned_yard_location": { "type": "string" },
+        "notes": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["transaction_number", "container_number", "truck_number", "driver", "date_time", "status"]
+    },
+    "GateOutTransaction": {
+      "title": "GateOutTransaction",
+      "description": "Transaksi keluar gerbang terminal",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "transaction_number": { "type": "string" },
+        "container_number": { "type": "string" },
+        "truck_number": { "type": "string" },
+        "driver": { "type": "string" },
+        "date_time": { "type": "string" },
+        "destination": { "type": "string" },
+        "do_number": { "type": "string" },
+        "notes": { "type": "string" },
+        "status": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["transaction_number", "container_number", "truck_number", "driver", "date_time", "status"]
+    },
+    "YardMovementTransaction": {
+      "title": "YardMovementTransaction",
+      "description": "Mutasi atau relokasi peti kemas antar slot yard",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "movement_number": { "type": "string" },
+        "container_number": { "type": "string" },
+        "origin_location": { "type": "string" },
+        "destination_location": { "type": "string" },
+        "equipment": { "type": "string" },
+        "operator": { "type": "string" },
+        "date_time": { "type": "string" },
+        "status": { "type": "string" },
+        "notes": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["movement_number", "container_number", "origin_location", "destination_location", "status"]
+    },
+    "LoadingOperation": {
+      "title": "LoadingOperation",
+      "description": "Pemuatan peti kemas ke kapal",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "loading_number": { "type": "string" },
+        "vessel_id": { "type": "string" },
+        "vessel_name": { "type": "string" },
+        "container_number": { "type": "string" },
+        "crane": { "type": "string" },
+        "operator": { "type": "string" },
+        "position": { "type": "string" },
+        "date_time": { "type": "string" },
+        "status": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["loading_number", "vessel_name", "container_number", "crane", "operator", "status"]
+    },
+    "UnloadingOperation": {
+      "title": "UnloadingOperation",
+      "description": "Pembongkaran peti kemas dari kapal",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "unloading_number": { "type": "string" },
+        "vessel_id": { "type": "string" },
+        "vessel_name": { "type": "string" },
+        "container_number": { "type": "string" },
+        "crane": { "type": "string" },
+        "operator": { "type": "string" },
+        "position": { "type": "string" },
+        "date_time": { "type": "string" },
+        "status": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["unloading_number", "vessel_name", "container_number", "crane", "operator", "status"]
+    },
+    "DeliveryOrder": {
+      "title": "DeliveryOrder",
+      "description": "Delivery Order rilis kargo",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "do_number": { "type": "string" },
+        "customer_id": { "type": "string" },
+        "customer_name": { "type": "string" },
+        "container_number": { "type": "string" },
+        "destination": { "type": "string" },
+        "truck_number": { "type": "string" },
+        "driver": { "type": "string" },
+        "date": { "type": "string" },
+        "expiry_date": { "type": "string" },
+        "status": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["do_number", "customer_name", "container_number", "status"]
+    }
+  },
+  "firestore": {
+    "/containers/{containerId}": {
+      "entity": "Container",
+      "description": "Koleksi data master dan status terkini peti kemas"
+    },
+    "/vessels/{vesselId}": {
+      "entity": "Vessel",
+      "description": "Koleksi data kapal"
+    },
+    "/customers/{customerId}": {
+      "entity": "Customer",
+      "description": "Koleksi data pelanggan dan consignee"
+    },
+    "/ports/{portId}": {
+      "entity": "Port",
+      "description": "Koleksi data pelabuhan"
+    },
+    "/yard_locations/{locationId}": {
+      "entity": "YardLocation",
+      "description": "Koleksi status dan peta slot penumpukan yard"
+    },
+    "/container_types/{typeId}": {
+      "entity": "ContainerType",
+      "description": "Koleksi tipe ISO kontainer"
+    },
+    "/gate_in_transactions/{transactionId}": {
+      "entity": "GateInTransaction",
+      "description": "Log transaksi Gate In"
+    },
+    "/gate_out_transactions/{transactionId}": {
+      "entity": "GateOutTransaction",
+      "description": "Log transaksi Gate Out"
+    },
+    "/yard_movements/{movementId}": {
+      "entity": "YardMovementTransaction",
+      "description": "Log mutasi penataan yard"
+    },
+    "/loading_operations/{operationId}": {
+      "entity": "LoadingOperation",
+      "description": "Log muat kontainer ke kapal"
+    },
+    "/unloading_operations/{operationId}": {
+      "entity": "UnloadingOperation",
+      "description": "Log bongkar kontainer dari kapal"
+    },
+    "/delivery_orders/{doId}": {
+      "entity": "DeliveryOrder",
+      "description": "Koleksi Delivery Order"
+    }
+  }
+}

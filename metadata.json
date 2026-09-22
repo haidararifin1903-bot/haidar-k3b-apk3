@@ -1,0 +1,6 @@
+{
+  "name": "HAI CONTAINER",
+  "description": "Sistem Manajemen Operasional Terminal Peti Kemas (Container Terminal Operating System) terintegrasi untuk mengelola Master Data, Gate In/Out, Yard Stacking & Movement, Vessel Loading/Unloading, Delivery Order, Yard View interaktif, dan Laporan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
